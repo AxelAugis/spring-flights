@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common :: header}"></head>
+<body>
+  <div th:replace="~{common :: menu}"></div>
+  <div class="container">
+    <div class="row"><h2>Nos Avions</h2></div>
+    <div class="row col-md-8">
+      <p><a href="/airplane/create" class="btn btn-primary btn-sm">Ajouter un avion</a></p>
+      <p><a href="/airplane/orderByNameASC" class="btn btn-primary btn-sm">Avions par ordre alphabétique</a></p>
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom de l'avion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="airplane : ${airplanes}">
+            <td th:text="${airplane.id}"></td>
+            <td th:text="${airplane.name}"></td>
+            <td>
+              <a th:href="@{/airplane/edit/{id}(id=${airplane.id})}">
+                <button class="btn btn-info">Modifier</button>
+              </a>
+              <a th:href="@{/airplane/delete/{id}(id=${airplane.id})}">
+                <button class="btn btn-danger">Supprimer</button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div th:replace="~{common :: js-script}"></div>
+</body>
+</html>

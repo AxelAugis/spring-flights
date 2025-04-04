@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common :: header}"></head>
+<body>
+  <div th:replace="~{common :: menu}"></div>
+  <div class="container">
+    <div class="row"><h2>Nos Avions</h2></div>
+    <div class="row col-md-8">
+      <p><a href="/city/create" class="btn btn-primary btn-sm">Ajouter une ville</a></p>
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom de la ville</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="city : ${cities}">
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.name}"></td>
+            <td>
+              <a th:href="@{/city/edit/{id}(id=${city.id})}">
+                <button class="btn btn-info">Modifier</button>
+              </a>
+              <a th:href="@{/city/delete/{id}(id=${city.id})}">
+                <button class="btn btn-danger">Supprimer</button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div th:replace="~{common :: js-script}"></div>
+</body>
+</html>

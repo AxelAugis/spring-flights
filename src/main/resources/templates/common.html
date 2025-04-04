@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:fragment="header" id="header">
+    <meta charset="utf-8" />
+    <title>InsuranceAFIP</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"  th:fragment="menu" id="menu">
+      <a class="navbar-brand" href="#">Agence de voyage</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="/airplane/list">Avions</a></li>
+          <li class="nav-item"><a class="nav-link" href="/city/list">Villes</a></li>
+          <li class="nav-item"><a class="nav-link" href="/flight/list">Nos vols</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div th:fragment="js-script" id="js-script">
+      <script src="/js/jquery-3.7.1.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $('li.active').removeClass('active').removeAttr('aria-current');
+          $('a[href="' + location.pathname + '"]').closest('li').addClass('active').attr('aria-current', 'page');
+        });
+      </script>
+    </div>
+  </body>
+</html>

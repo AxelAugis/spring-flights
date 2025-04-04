@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{common :: header}"></head>
+<body>
+  <div th:replace="~{common :: menu}"></div>
+  <div class="container">
+    <div class="row"><h2>Nouvelle ville</h2></div>
+    <div class="row">
+      <form th:action="@{/city/create}" th:object="${city}" method="post" class="form-horizontal" style="width: 100%">
+        <div class="form-group">
+          <label for="name" class="col-sm-2 control-label">Prénom</label>
+          <div class="col-sm-10">
+            <input type="text" th:field="*{name}" id="name" placeholder="Nom de la ville" class="col-4">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <a class="btn btn-danger btn-sm" href="/city/list">Annuler</a>
+            <input class="btn btn-primary btn-sm" type="submit" value="Enregistrer">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div th:replace="~{common :: js-script}"></div>
+</body>
+</html>
